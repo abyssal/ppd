@@ -17,11 +17,11 @@ A React, MIT-licensed alternative to [Pronoun Island](https://pronoun.is/).
 ### data structure
 pronouns are stored at [public/data/db-pronouns.json](public/data/db-pronouns.json), in the following format:  
 **format option 1 - implied**
-```json
+```js
 "he": ["he", "him", "his", "his", "himself"]
 ```
 **format option 2 - named**
-```json
+```js
 "she": {
   "subj": "she", // Subject
   "obj": "her", // Object
@@ -31,7 +31,7 @@ pronouns are stored at [public/data/db-pronouns.json](public/data/db-pronouns.js
 }
 ```
 **format option 3 - options**
-```json
+```js
 "they": {
   "subj": "they",
   "obj": "them",
