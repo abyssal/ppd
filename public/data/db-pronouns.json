@@ -1,0 +1,30 @@
+{
+    "name": "Progressive Pronoun Directory - Database",
+    "copyright": "MIT, PPD contributors",
+    "data": {
+        "he": ["he", "him", "his", "his", "himself"],
+        "she": {
+            "subj": "she",
+            "obj": "her",
+            "pd": "her",
+            "pp": "hers",
+            "rflx": "herself"
+        },
+        "they": {
+            "subj": "they",
+            "obj": "them",
+            "pd": "their",
+            "pp": "theirs",
+            "rflx": [
+                {
+                    "value": "themself",
+                    "notes": "This is used when referring to one person who uses they/them."
+                },
+                {
+                    "value": "themselves",
+                    "notes": "This is typically used when referring to a group, but is also valid for one person."
+                }
+            ]
+        }
+    }
+}
