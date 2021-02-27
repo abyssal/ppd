@@ -15,7 +15,8 @@ A React, MIT-licensed alternative to [Pronoun Island](https://pronoun.is/).
   - history or etymology of pronouns 
 
 ### data structure
-pronouns are stored at [public/data/db-pronouns.json](public/data/db-pronouns.json), in the following format:  
+pronouns are stored at [public/data/db-pronouns.json](public/data/db-pronouns.json), in the following format.  
+the data types are compatible, and a string value will be converted into an object with `value`, `ipa`, and `notes`.
 **format option 1 - implied**
 ```js
 "he": ["he", "him", "his", "his", "himself", {/*other data, see format option 2*/}]
@@ -37,7 +38,10 @@ pronouns are stored at [public/data/db-pronouns.json](public/data/db-pronouns.js
 **format option 3 - options**
 ```js
 "they": {
-  "subj": "they",
+  "subj": {
+    "value": "they",
+    "ipa": "ðeɪ" // IPA pronunciation
+  },
   "obj": "them",
   "pd": "their",
   "pp": "theirs",
