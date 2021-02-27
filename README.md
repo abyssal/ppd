@@ -54,6 +54,11 @@ pronouns are stored at [public/data/db-pronouns.json](public/data/db-pronouns.js
   "meta": {/*see format option 2 */}
 }
 ```
+### pronoun policy
+(to be developed further)   
+ppd is the **progressive** pronoun database, so neopronouns and other such topics are allowed. pull requests are welcomed and encouraged! please share your pronouns with us.   
+**please tag pronoun database update issues/PRs with `pronouns-update`**!  
+as for etymology with neopronouns, any source (internet or print) will do, and an approximate year for the first attestation or usage in a text.
 
 ### license
 copyright &copy; 2021-present [abyssal](https://github.com/abyssal) and PPD contributors under the MIT License.
