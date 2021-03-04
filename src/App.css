@@ -1,23 +1,10 @@
 .App {
   text-align: center;
-  padding: 15px;
+  padding: 10px;
 }
 
 .header {
   font-weight: bold;
   color: lightblue;
   font-size: 52px;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
