@@ -70,7 +70,12 @@ class Pronoun {
                 value: data
             }
         ]
-        else this.types = data
+        else if (Array.isArray(data)) {
+            this.types = data
+        }
+        else {
+            this.types = [data]
+        }
     }
     toString() {
         return this.types[0].value
@@ -115,7 +120,7 @@ export default function PronounView() {
             <div>
                 <div style={{
                     fontSize: 'x-large'
-                }}>Hey! I use <strong>{pronoun.subjective.toString()}/{pronoun.object.toString()}</strong> pronouns, and here's how to use them.</div>
+                }}>Hey! I use <strong>{pronoun.subjective.toString()}/{pronoun.object.toString()}</strong> pronouns.</div>
                 <div style={{
                     textAlign: 'left'
                 }}>
@@ -141,7 +146,7 @@ function formatString(sentence, allPronouns, replacements) {
     for (const replacementKey of Object.keys(replacements)) {
         formatData[replacementKey] = '<b>' + replacements[replacementKey] + '</b>';
     }
-    formatData['isAre'] = allPronouns.subjective === 'they' ? 'are' : 'is';
+    formatData['isAre'] = allPronouns.subjective.types[0].value === 'they' ? 'are' : 'is';
     return sentence.formatUnicorn(formatData)
 }
 
@@ -156,20 +161,26 @@ function PronounItem(props) {
                         return (
                         <li style={{paddingBottom: '50px'}}><span dangerouslySetInnerHTML={{ __html: formatString(exampleSentence, allPronouns, {}) }} />
                           <span style={{color: 'white', backgroundColor: 'grey', padding: '2px', fontWeight: 'bold', marginLeft: '5px'}}>{info.displayName}</span>
-                          {data.types.length > 1 ? <ul>
-                              {data.types.slice(1).map(alternativeType => {
-                                  var object = {}
-                                  Object.defineProperty(object, type, {value: alternativeType.value, enumerable: true})
-                                  return <li style={{padding: '5px'}}>
-                                      <span style={{
-                                          backgroundColor: 'grey',
-                                          color: 'white',
-                                          padding: '2px'
-                                      }}>Alternative:</span> <strong>{alternativeType.value}</strong>
-                                      <br /><span style={{marginTop: '10px'}}>{alternativeType.notes}</span>
-                                  </li>
-                              })}
-                          </ul> : <></>}
+                          <ul>
+                          {data.types[0].ipa ? <li style={{padding: '5px'}}>
+                            Listen: <a target="_blank" rel="noreferrer" href={"http://ipa-reader.xyz/?text=" + data.types[0].ipa}>IPA</a>
+                          </li> : <></>}
+                              {/*Alternative pronoun types */}
+                                {data.types.length > 1 ? 
+                                data.types.slice(1).map(alternativeType => {
+                                    var object = {}
+                                    Object.defineProperty(object, type, {value: alternativeType.value, enumerable: true})
+                                    return <li style={{padding: '5px'}}>
+                                        <span style={{
+                                            backgroundColor: 'grey',
+                                            color: 'white',
+                                            padding: '2px'
+                                        }}>Alternative:</span> <strong>{alternativeType.value}</strong>
+                                        <br /><span style={{marginTop: '10px'}}>{alternativeType.notes}</span>
+                                    </li>
+                                })
+                            : <></>}
+                          </ul>
                         </li>);
                     }
                     )}

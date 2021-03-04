@@ -11,7 +11,10 @@
             "rflx": "herself"
         },
         "they": {
-            "subj": "they",
+            "subj": {
+                "value": "they",
+                "ipa": "ðeɪ"
+            },
             "obj": "them",
             "pd": "their",
             "pp": "theirs",
